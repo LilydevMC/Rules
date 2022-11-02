@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "example_mod",
+  "version": "${version}",
+
+  "name": "Example Mod",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "jadelily18"
+  ],
+  "contact": {
+    "homepage": "https://lilydev.com/",
+    "issues": "https://github.com/jadelily18/fabric-template-kotlin/issues",
+    "sources": "https://github.com/jadelily18/fabric-template-kotlin"
+  },
+
+  "license": "LGPL-3.0",
+  "icon": "assets/example_mod/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "com.lilydev.example_mod.ExampleMod"
+      }
+    ],
+    "modmenu": [
+      {
+        "adapter": "kotlin",
+        "value": "com.lilydev.example_mod.integrations.ModMenuImpl"
+      }
+    ]
+  },
+  "mixins": [
+    "example_mod.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.18",
+    "java": ">=17",
+    "fabric-language-kotlin": ">=1.8.5+kotlin.1.7.20"
+  },
+  "suggests": {
+    "another-mod": "modmenu"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/TZAt4PA5av",
+        "modmenu.kofi": "https://ko-fi.com/jadelily"
+      }
+    }
+  }
+}
