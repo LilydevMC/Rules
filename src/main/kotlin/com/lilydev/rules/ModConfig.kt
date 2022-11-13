@@ -21,7 +21,6 @@ data class Rule(
 )
 
 class ModConfig {
-
     companion object {
         private var config: Config? = null
         var rules: String? = null
@@ -76,8 +75,10 @@ class ModConfig {
                             "<underline><blue><url:'https://github.com/Lilydev-by-jade/Rules'>here</url></blue></underline>.</gray>"
                 ))
             )
+
             val jsonAsString = jsonFormat.encodeToString(json)
             val configFile = File("config/rules.json")
+
             configFile.createNewFile()
             configFile.writeText(jsonAsString)
         }

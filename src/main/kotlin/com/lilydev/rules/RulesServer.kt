@@ -28,7 +28,6 @@ object RulesServer : DedicatedServerModInitializer {
                 }.executes {
                     context ->
                     context.source.sendFeedback(TextParser.parse(ModConfig.rules), false)
-
                     return@executes 1
                 }.then(
                     literal("reload").requires { source ->
