@@ -23,12 +23,17 @@ object RulesServer : DedicatedServerModInitializer {
         CommandRegistrationCallback.EVENT.register {
             dispatcher, registryAccess ->
             dispatcher.register(
-                literal("rules").executes {
+                literal("rules").requires { source ->
+                    source.hasPermissionLevel(1)
+                }.executes {
                     context ->
                     context.source.sendFeedback(TextParser.parse(ModConfig.rules), false)
+
                     return@executes 1
                 }.then(
-                    literal("reload").executes {
+                    literal("reload").requires { source ->
+                        source.hasPermissionLevel(3)
+                    }.executes {
                         context ->
                         ModConfig.load()
                         context.source.sendFeedback(TextParser.parse("<italic><gray>Rules reloaded!"), true)
