@@ -3,6 +3,7 @@ package com.lilydev.rules
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 import java.io.File
+import java.io.FileNotFoundException
 
 @Serializable
 data class Config(
@@ -26,7 +27,14 @@ class ModConfig {
         var rules: String? = null
 
         fun load() {
-            val fileContents: String = readFile()
+            val fileContents: String
+            try {
+                fileContents = readFile()
+            } catch (e: FileNotFoundException) {
+                createFile()
+                load()
+                return
+            }
             config = Json.decodeFromString<Config>(fileContents)
             rules = formatRules()
         }
@@ -56,8 +64,22 @@ class ModConfig {
             return rulesString
         }
 
-        fun createFile() {
+        private fun createFile() {
+            val jsonFormat = Json { prettyPrint = true }
 
+            val json = Config(
+                "",
+                "\${rule_description}",
+                listOf(Rule("Rule Title",
+                    "This server does not have a configured rules.json file yet!\n" +
+                            "<gray>Learn how to create one " +
+                            "<underline><blue><url:'https://github.com/Lilydev-by-jade/Rules'>here</url></blue></underline>.</gray>"
+                ))
+            )
+            val jsonAsString = jsonFormat.encodeToString(json)
+            val configFile = File("config/rules.json")
+            configFile.createNewFile()
+            configFile.writeText(jsonAsString)
         }
     }
 }
