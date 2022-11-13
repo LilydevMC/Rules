@@ -21,10 +21,10 @@ object RulesServer : DedicatedServerModInitializer {
         ModConfig.load()
 
         CommandRegistrationCallback.EVENT.register {
-            dispatcher, registryAccess ->
+            dispatcher, _ ->
             dispatcher.register(
                 literal("rules").requires { source ->
-                    source.hasPermissionLevel(1)
+                    source.hasPermissionLevel(0)
                 }.executes {
                     context ->
                     context.source.sendFeedback(TextParser.parse(ModConfig.rules), false)
