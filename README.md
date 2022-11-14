@@ -1,9 +1,15 @@
-# Jade's Fabric Kotlin Template Mod
+# Rules
 
-This template is based on [FabricMC's Official Fabric Template](https://github.com/FabricMC/fabric-example-mod), but using Kotlin where possible instead of Java! If you want to use this, you can, but it's meant for my mods, so I have less boilerplate to write.
+Rules is a highly-configurable server-side Fabric mod that allows
+you to create and customize a `/rules` command. For customization,
+Rules uses [Simplified Text Format](https://placeholders.pb4.eu/user/text-format/),
+which means you can customize your rules pretty much ***any*** way you want,
+as long as it's in that format!
+
+## Configuration
+
+Learn how to configure Rules [here](https://docs.lilydev.com/docs/Mods/Rules).
 
 ## License
 
-This template is licensed under the [Creative Common Zero v1.0 license](https://github.com/jadelily18/fabric-template-kotlin/blob/1.19/LICENSE).
-
-Mods created with this template are not automatically licensed under the CC0, and are not required to give any kind of credit back to FabricMC or jadelily18 for this template.
+Rules is licensed under [GNU Lesser General Public License v3.0](https://github.com/Lilydev-by-jade/Rules/blob/1.18/LICENSE).
