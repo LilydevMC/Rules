@@ -1,9 +1,22 @@
-# Jade's Fabric Kotlin Template Mod
+# Rules
 
-This template is based on [FabricMC's Official Fabric Template](https://github.com/FabricMC/fabric-example-mod), but using Kotlin where possible instead of Java! If you want to use this, you can, but it's meant for my mods, so I have less boilerplate to write.
+[![Modrinth Downloads](https://img.shields.io/badge/dynamic/json?color=30b27c&style=flat-square&label=downloads&query=downloads&url=https%3A%2F%2Fapi.modrinth.com%2Fv2%2Fproject%2F4a1Rhkhp&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEuNSIgY2xpcC1ydWxlPSJldmVub2RkIiB2aWV3Qm94PSIwIDAgNjggNjgiPjxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0uMDUgMGg2NnY2NmgtNjZ6Ii8+PGNsaXBQYXRoIGlkPSJhIj48cGF0aCBkPSJNLjA1IDBoNjZ2NjZoLTY2eiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI2EpIj48Y2xpcFBhdGggaWQ9ImIiPjxjaXJjbGUgY3g9IjMzLjA1IiBjeT0iMzMiIHI9IjMzIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjYikiPjxjbGlwUGF0aCBpZD0iYyI+PHBhdGggZD0iTTgzLjA1LTE3aC0xMDBWODNoMTAwVi0xN1pNMjkuMDUxIDMyLjI5NWwuMDc3IDEuNzU3IDguODI5IDMyLjk2MyA3Ljg0NC0yLjEwMi04LjU5Ny0zMi4wOTRMNDMuMDA5LS4xMTNsLTcuOTk3LTEuNDEtNS45NjEgMzMuODE4WiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI2MpIj48cGF0aCBmaWxsPSIjMzBiMjdjIiBkPSJNMzMuMDUgMGMxOC4yMDYgMCAzMi45ODggMTQuNzg3IDMyLjk4OCAzM1M1MS4yNTYgNjYgMzMuMDUgNjZDMTQuODQzIDY2IC4wNjEgNTEuMjEzLjA2MSAzM1MxNC44NDMgMCAzMy4wNSAwWm0wIDljMTMuMjQgMCAyMy45ODggMTAuNzU1IDIzLjk4OCAyNFM0Ni4yOSA1NyAzMy4wNSA1N0MxOS44MDkgNTcgOS4wNjEgNDYuMjQ1IDkuMDYxIDMzUzE5LjgwOSA5IDMzLjA1IDlaIi8+PC9nPjxjbGlwUGF0aCBpZD0iZCI+PHBhdGggZD0iTS0xNi45NS0xN3Y0Nmg1MGwxLjM2OC4yNDFMODIuMDUgNDYuNTc4bC0yLjczNyA3LjUxN0wzMi4zNDQgMzdILTE2Ljk1djQ2aDEwMFYtMTdoLTEwMFoiLz48L2NsaXBQYXRoPjxnIGNsaXAtcGF0aD0idXJsKCNkKSI+PHBhdGggZmlsbD0iIzMwYjI3YyIgZD0iTTMzLjA1LTE3YzI3LjU5NSAwIDUwIDIyLjQwNCA1MCA1MHMtMjIuNDA1IDUwLTUwIDUwYy0yNy41OTYgMC01MC0yMi40MDQtNTAtNTBzMjIuNDA0LTUwIDUwLTUwWm0wIDljMjIuNjI4IDAgNDEgMTguMzcxIDQxIDQxcy0xOC4zNzIgNDEtNDEgNDFjLTIyLjYyOSAwLTQxLTE4LjM3MS00MS00MXMxOC4zNzEtNDEgNDEtNDFaIi8+PC9nPjxjbGlwUGF0aCBpZD0iZSI+PHBhdGggZD0iTTMzLjA1LTE3YzI3LjU5NSAwIDUwIDIyLjQwNCA1MCA1MHMtMjIuNDA1IDUwLTUwIDUwYy0yNy41OTYgMC01MC0yMi40MDQtNTAtNTBzMjIuNDA0LTUwIDUwLTUwWm0wIDM5LjU0OWM1Ljc2NyAwIDEwLjQ1IDQuNjgzIDEwLjQ1IDEwLjQ1MSAwIDUuNzY4LTQuNjgzIDEwLjQ1MS0xMC40NSAxMC40NTEtNS43NjggMC0xMC40NTEtNC42ODMtMTAuNDUxLTEwLjQ1MSAwLTUuNzY4IDQuNjgzLTEwLjQ1MSAxMC40NTEtMTAuNDUxWiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI2UpIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMGIyN2MiIHN0cm9rZS13aWR0aD0iOSIgZD0ibTMzLjA1IDMzLTQ0LjgyOSAyNS44ODIiLz48L2c+PGNsaXBQYXRoIGlkPSJmIj48cGF0aCBkPSJNMzMuMDUtMTdjMjcuNTk1IDAgNTAgMjIuNDA0IDUwIDUwcy0yMi40MDUgNTAtNTAgNTBjLTI3LjU5NiAwLTUwLTIyLjQwNC01MC01MHMyMi40MDQtNTAgNTAtNTBabTAgMjUuMzZjMTMuNTk5IDAgMjQuNjQgMTEuMDQxIDI0LjY0IDI0LjY0UzQ2LjY0OSA1Ny42NCAzMy4wNSA1Ny42NEMxOS40NSA1Ny42NCA4LjQwOSA0Ni41OTkgOC40MDkgMzNTMTkuNDUgOC4zNiAzMy4wNSA4LjM2WiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI2YpIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMzMGIyN2MiIHN0cm9rZS13aWR0aD0iOSIgZD0ibTMzLjA1IDMzIDUwLTEzLjM5NyIvPjwvZz48cGF0aCBmaWxsPSIjMzBiMjdjIiBkPSJNMjAuMjkzIDM1Ljc0NiAxOC4wNSAyOGw4LTkgMTEtMyA0IDQtNiA2LTQgMS0zIDQgMS4xMiA0LjI0IDMuMTEyIDMuMDkgNC45NjQtLjU5OCAyLjg2Ni0yLjk2NCA4LjE5Ni0yLjE5NiAxLjQ2NCA1LjQ2NC04LjA5OCA4LjAyNkwyOS44OCA0OC40OWwtNS41ODctNS44MTUtNC02LjkyOVoiLz48L2c+PC9nPjwvc3ZnPg==)](https://modrinth.com/mod/rules)
+[![License](https://img.shields.io/github/license/Lilydev-By-Jade/Rules?style=flat-square)](https://github.com/Lilydev-By-Jade/Rules/blob/1.19/LICENSE)
+[![Lilydev Discord](https://img.shields.io/discord/995465843364343883?color=5865F2&style=flat-square&label=discord)](https://discord.gg/TZAt4PA5av)
+[![Kofi](https://badgen.net/badge/icon/kofi?icon=kofi&label=jadelily&color=pink&style=flat-square)](https://ko-fi.com/jadelily)
+
+Rules is a highly-configurable server-side Fabric mod that allows
+you to create and customize a `/rules` command. For customization,
+Rules uses [Simplified Text Format](https://placeholders.pb4.eu/user/text-format/),
+which means you can customize your rules pretty much ***any*** way you want,
+as long as it's in that format!
+
+![rules command showcase](https://docs.lilydev.com/assets/images/modrinth_smp_rules-a3dffbf9cabb6341cf02ebc07dc1d3a5.gif)
+
+## Configuration
+
+Learn how to configure Rules [here](https://docs.lilydev.com/docs/Mods/Rules).
 
 ## License
 
-This template is licensed under the [Creative Common Zero v1.0 license](https://github.com/jadelily18/fabric-template-kotlin/blob/1.19/LICENSE).
-
-Mods created with this template are not automatically licensed under the CC0, and are not required to give any kind of credit back to FabricMC or jadelily18 for this template.
+Rules is licensed under [GNU Lesser General Public License v3.0](https://github.com/Lilydev-by-jade/Rules/blob/1.19/LICENSE).
