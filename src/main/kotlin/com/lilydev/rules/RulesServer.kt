@@ -1,8 +1,8 @@
 package com.lilydev.rules
 
-import eu.pb4.placeholders.TextParser
+import eu.pb4.placeholders.api.TextParserUtils
 import net.fabricmc.api.DedicatedServerModInitializer
-import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import net.minecraft.server.command.CommandManager.*
@@ -21,13 +21,13 @@ object RulesServer : DedicatedServerModInitializer {
         ModConfig.load()
 
         CommandRegistrationCallback.EVENT.register {
-            dispatcher, _ ->
+            dispatcher, _, _ ->
             dispatcher.register(
                 literal("rules").requires { source ->
                     source.hasPermissionLevel(0)
                 }.executes {
                     context ->
-                    context.source.sendFeedback(TextParser.parse(ModConfig.rules), false)
+                    context.source.sendFeedback(TextParserUtils.formatText(ModConfig.rules), false)
                     return@executes 1
                 }.then(
                     literal("reload").requires { source ->
@@ -35,7 +35,7 @@ object RulesServer : DedicatedServerModInitializer {
                     }.executes {
                         context ->
                         ModConfig.load()
-                        context.source.sendFeedback(TextParser.parse("<italic><gray>Rules reloaded!"), true)
+                        context.source.sendFeedback(TextParserUtils.formatText("<italic><gray>Rules reloaded!"), true)
                         return@executes 1
                     }
                 )
