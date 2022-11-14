@@ -72,7 +72,7 @@ class ModConfig {
                 listOf(Rule("Rule Title",
                     "This server does not have a configured rules.json file yet!\n" +
                             "<gray>Learn how to create one " +
-                            "<underline><blue><url:'https://github.com/Lilydev-by-jade/Rules'>here</url></blue></underline>.</gray>"
+                            "<underline><blue><url:'https://docs.lilydev.com/docs/Mods/Rules'>here</url></blue></underline>.</gray>"
                 ))
             )
 
