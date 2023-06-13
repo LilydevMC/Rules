@@ -1,8 +1,7 @@
 plugins {
-	id 'fabric-loom' version '1.0-SNAPSHOT'
+	id 'fabric-loom' version '1.2-SNAPSHOT'
 	id 'maven-publish'
-	id 'org.jetbrains.kotlin.jvm' version '1.7.20'
-	id 'org.jetbrains.kotlin.plugin.serialization' version '1.7.20'
+	id 'org.jetbrains.kotlin.jvm' version '1.8.22'
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -19,9 +18,22 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 
-	// for Placeholder API
+	// For LilyLib
 	maven {
+		name = "Lilydev"
+		url "https://maven.lilydev.com/snapshots"
+	}
+
+	// For Placeholder API
+	maven {
+		name "Nucleoid"
 		url "https://maven.nucleoid.xyz/"
+	}
+
+	// Fabric Permissions API
+	maven {
+		name "Sonatype"
+		url "https://oss.sonatype.org/content/repositories/snapshots"
 	}
 
 }
@@ -35,16 +47,16 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	// Uncomment the following line to enable the deprecated Fabric API modules. 
-	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
-
 	modImplementation "net.fabricmc:fabric-language-kotlin:${project.flk_version}"
 
-	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
+	// LilyLib
+	modImplementation "com.lilydev:LilyLib:${project.lilylib_version}"
 
 	// Placeholder API
-	modImplementation include("eu.pb4:placeholder-api:${project.placeholderapi_version}")
+	modImplementation include("eu.pb4:placeholder-api:${project.placeholder_api_version}")
 
+	// Fabric Permissions API
+	modImplementation include("me.lucko:fabric-permissions-api:${project.fabric_permissions_api_version}")
 }
 
 processResources {
