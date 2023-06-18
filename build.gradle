@@ -106,9 +106,9 @@ publishing {
 			name "lilydevMaven"
 
 			if (
-					project.mod_version.contains("beta") ||
-					project.mod_version.contains("alpha") ||
-					project.mod_version.contains("snapshot")
+				project.mod_version.contains("beta") ||
+				project.mod_version.contains("alpha") ||
+				project.mod_version.contains("snapshot")
 			) {
 				url "https://maven.lilydev.com/snapshots"
 			} else {
