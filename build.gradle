@@ -1,5 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.2-SNAPSHOT'
+	id "io.github.juuxel.loom-quiltflower" version "1.10.0"
+	id 'co.uzzu.dotenv.gradle' version '2.0.0'
 	id 'maven-publish'
 	id 'org.jetbrains.kotlin.jvm' version '1.8.22'
 }
@@ -20,7 +22,7 @@ repositories {
 
 	// For LilyLib
 	maven {
-		name = "Lilydev"
+		name "Lilydev"
 		url "https://maven.lilydev.com/snapshots"
 	}
 
@@ -30,7 +32,7 @@ repositories {
 		url "https://maven.nucleoid.xyz/"
 	}
 
-	// Fabric Permissions API
+	// For Fabric Permissions API
 	maven {
 		name "Sonatype"
 		url "https://oss.sonatype.org/content/repositories/snapshots"
@@ -40,23 +42,23 @@ repositories {
 
 dependencies {
 	// To change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	minecraft("com.mojang:minecraft:${project.minecraft_version}")
+	mappings("net.fabricmc:yarn:${project.yarn_mappings}:v2")
+	modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
 
-	modImplementation "net.fabricmc:fabric-language-kotlin:${project.flk_version}"
+	modImplementation("net.fabricmc:fabric-language-kotlin:${project.flk_version}")
 
 	// LilyLib
-	modImplementation "com.lilydev:LilyLib:${project.lilylib_version}"
+	modApi("com.lilydev:LilyLib:${project.lilylib_version}")
 
 	// Placeholder API
-	modImplementation include("eu.pb4:placeholder-api:${project.placeholder_api_version}")
+	include(modImplementation("eu.pb4:placeholder-api:${project.placeholder_api_version}"))
 
 	// Fabric Permissions API
-	modImplementation include("me.lucko:fabric-permissions-api:${project.fabric_permissions_api_version}")
+	include(modImplementation("me.lucko:fabric-permissions-api:${project.fabric_permissions_api_version}"))
 }
 
 processResources {
@@ -99,5 +101,24 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
+
+		maven {
+			name "lilydevMaven"
+
+			if (
+					project.mod_version.contains("beta") ||
+					project.mod_version.contains("alpha") ||
+					project.mod_version.contains("snapshot")
+			) {
+				url "https://maven.lilydev.com/snapshots"
+			} else {
+				url "https://maven.lilydev.com/releases"
+			}
+
+			credentials {
+				username env.REPO_USER.value
+				password env.REPO_TOKEN.value
+			}
+		}
 	}
 }
