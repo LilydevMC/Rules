@@ -115,8 +115,8 @@ publishing {
 			}
 
 			credentials {
-				username env.REPO_USER.value
-				password env.REPO_TOKEN.value
+				username env.REPO_USER.orNull()
+				password env.REPO_TOKEN.orNull()
 			}
 		}
 	}
