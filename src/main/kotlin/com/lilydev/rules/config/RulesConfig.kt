@@ -13,7 +13,7 @@ open class RulesConfig(modName: String, path: String, fileName: String) : JsonCo
 
 		rule["title"] = ""
 		rule["description"] = "This server does not have a configured rules.json file yet!\n<gray>" +
-				"Learn how to create one <underline><blue><url:'https://github.com/Lilydev-by-jade/Rules'>" +
+				"Learn how to create one <underline><blue><url:'https://docs.lilydev.com/docs/Mods/Rules'>" +
 				"here</url></blue></underline>.</gray>"
 
 		configMap["rules"] = arrayListOf(rule)

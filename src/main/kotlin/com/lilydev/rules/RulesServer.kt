@@ -34,11 +34,9 @@ object RulesServer : DedicatedServerModInitializer {
                 .requires(Permissions.require("rules.command.rules", 0))
                 .executes { ctx ->
                     ctx.source.sendFeedback(
-                        {
-                            TextParserUtils.formatText(
-                                RulesUtils.generateRulesString(config.data)
-                            )
-                        },
+                        TextParserUtils.formatText(
+                            RulesUtils.generateRulesString(config.data)
+                        ),
                         false
                     )
                     return@executes Command.SINGLE_SUCCESS
